@@ -34,6 +34,13 @@ for doc in docs:
     df = pd.DataFrame.from_records(items)
 df['predictions'] = df['predictions'].apply(lambda x: 'positive' if x == '4' else 'negative')
 
+docs = db.collection(u'igcommentspredict').stream()
+items = []
+for doc in docs:
+    items.append(doc.to_dict())
+    df1 = pd.DataFrame.from_records(items)
+df1['predictions'] = df1['predictions'].apply(lambda x: 'positive' if x == '4' else 'negative')
+
 #################################################################
 ################## Page Header ##################################
 #################################################################
@@ -76,7 +83,7 @@ if page_selected == "Home":
             "Which media platform do you want to view", 
             ('Instagram','Facebook'))
         if option2 == 'Instagram':
-            df_filter=df[df['account_id'] == '17841400137310298']
+            df_filter=df1[df1['account_id'] == '17841400137310298']
         if option2 == 'Facebook':
             df_filter = df[df['account_id'] == '121195131261394']
     if option == 'Pelicans':
@@ -84,7 +91,7 @@ if page_selected == "Home":
             "Which media platform do you want to view", 
             ('Instagram','Facebook'))
         if option2 == 'Instagram':
-            df_filter=df[df['account_id'] == '17841400085890242']
+            df_filter=df1[df1['account_id'] == '17841400085890242']
         if option2 == 'Facebook':
             df_filter = df[df['account_id'] == '186563232926']
 
