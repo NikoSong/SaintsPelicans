@@ -77,7 +77,7 @@ if page_selected == "Home":
             ('Instagram','Facebook'))
         if option2 == 'Instagram':
             df_filter=df[df['account_id'] == '17841400137310298']
-        else:
+        if option2 == 'Facebook':
             df_filter = df[df['account_id'] == '121195131261394']
     if option == 'Pelicans':
         option2 = st.sidebar.selectbox(
@@ -85,7 +85,7 @@ if page_selected == "Home":
             ('Instagram','Facebook'))
         if option2 == 'Instagram':
             df_filter=df[df['account_id'] == '17841400085890242']
-        else:
+        if option2 == 'Facebook':
             df_filter = df[df['account_id'] == '186563232926']
 
     if df_filter.shape[0] > 0:
